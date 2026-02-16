@@ -111,3 +111,6 @@ src/
     - Absence de backend : En cas de condition complexe, l'implementation de Policy devient hypercomplexe
     - gestion fine des erreurs
     - Scalabilité analytique limitée
+
+# Vercel : https://taram.vercel.app
+# Git : https://github.com/ainasoa/taram
