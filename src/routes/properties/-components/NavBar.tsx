@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Route } from "../protected";
+import { Route } from "..";
 import useLogout from "../-hooks/useLogout";
 
 export default function NavBar() {
