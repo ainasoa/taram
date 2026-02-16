@@ -48,7 +48,7 @@ export default function useSignUpForm() {
         email: values.email,
         password: values.password,
         options: {
-          emailRedirectTo: `${window.location.origin}/protected`,
+          emailRedirectTo: `${window.location.origin}/properties`,
         },
       });
 
