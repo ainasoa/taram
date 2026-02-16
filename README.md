@@ -1,6 +1,7 @@
 # -------------------Architecture :
 
 public/
+scripts/
 src/
   ├── lib/
   ├── components/
@@ -73,8 +74,40 @@ src/
       ((auth.uid() = agent_id) OR (is_published = true))
     );
 
-# ----------script python
+# ----------script python : Option C – Statistiques simples
     python3 -m venv venv
     source venv/bin/activate
     pip install ...
     python scripts/states.py
+
+# ------------Partie 4 – Raisonnement technique
+1.Pourquoi Supabase est adapté ici ?
+    - Gain de temps important pour un MVP
+    - Base PostgreSQL robuste et scalable
+    - Intégration simple avec React / Next.js
+
+2.Où placer la logique métier ?
+    RLS (Base de données)
+    - Gestion des droits d’accès
+    - Vérification des rôles (agent / client)
+    - Protection des données sensibles
+
+    Frontend.
+    - Validation UI
+    - Affichage conditionnel selon le rôle
+    - Navigation
+
+    Scripts Python
+    - Reporting
+    - Agrégations statistiques
+    - Automatisations planifiées
+
+3.À quoi servirait Python dans un projet réel ?
+    - Génération de rapports statistiques
+    - Nettoyage / validation de données
+    - Automatisations (cron jobs)
+
+4.Limites de cette architecture à grande échelle
+    - Absence de backend : En cas de condition complexe, l'implementation de Policy devient hypercomplexe
+    - gestion fine des erreurs
+    - Scalabilité analytique limitée
