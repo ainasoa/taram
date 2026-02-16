@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PropertiesList from "./-components/PropertiesList";
 import { NewPropertyForm } from "./-components/NewPropertyForm";
+import NavBar from "./-components/NavBar";
 
 export const Route = createFileRoute("/_protected/protected")({
   component: Properties,
@@ -13,8 +14,7 @@ function Properties() {
 
   return (
     <div className="p-6 flex flex-col gap-4">
-      Utilisateur : {data.user.email} <br />
-      Role : {data.user.role}
+      <NavBar />
       <Tabs defaultValue="properties">
         <div className="flex justify-between">
           <TabsList>

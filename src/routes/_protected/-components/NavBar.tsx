@@ -1,24 +1,18 @@
-import {
-  Menubar,
-  MenubarContent,
-  MenubarGroup,
-  MenubarItem,
-  MenubarMenu,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+import { Button } from "@/components/ui/button";
+import { Route } from "../protected";
+import useLogout from "../-hooks/useLogout";
 
-export default function MenubarDemo() {
+export default function NavBar() {
+  const data = Route.useLoaderData();
+  const logout = useLogout();
+
   return (
-    <Menubar className="w-72">
-      <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
-        <MenubarContent>
-          <MenubarGroup>
-            <MenubarItem>Biens</MenubarItem>
-            <MenubarItem>Mes Biens</MenubarItem>
-          </MenubarGroup>
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
+    <div className="flex justify-between items-center">
+      <div>
+        Utilisateur : {data.user.email} <br />
+        Role : {data.user.role}
+      </div>
+      <Button onClick={logout} variant='outline'>Se déconnecter</Button>
+    </div>
   );
 }
