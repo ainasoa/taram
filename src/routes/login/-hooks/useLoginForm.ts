@@ -36,7 +36,7 @@ export default function useLoginForm() {
       
             if (error) throw error;
       
-            await navigate({ to: "/protected" });
+            await navigate({ to: "/properties" });
             
         } catch (error) {
             setSubmitError(true)
