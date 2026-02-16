@@ -59,6 +59,7 @@ export default function useSignUpForm() {
           firstname: values.firstname,
           lastname: values.lastname,
           role: values.isAgent ? "agent" : "client",
+          id: data.user.id,
         });
 
         if (profileError) throw profileError;
