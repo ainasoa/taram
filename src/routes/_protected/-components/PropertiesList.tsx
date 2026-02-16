@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -14,18 +15,24 @@ export default function PropertiesList({ data }: Props) {
   const renderItem = (Item: PropertyType) => (
     <Card key={Item.id}>
       <CardHeader>
-        <CardTitle>{Item.title}</CardTitle>
+        <CardTitle className="flex justify-between">
+          {Item.title}
+          <span>N°{Item.id}</span>
+        </CardTitle>
         <CardDescription>{Item.description}</CardDescription>
       </CardHeader>
       <CardContent className="text-muted-foreground text-sm">
         {Item.city} <br />
-        {Item.price} Euro
+        {Item.price} Euro <br /> <br />
+        <Badge>
+          {Item.is_published ? "Publié" : "Non publié"}
+        </Badge>
       </CardContent>
     </Card>
   );
 
   return data?.length ? (
-    <div className="grid grid-cols-3">{data?.map(renderItem)}</div>
+    <div className="grid grid-cols-3 gap-4">{data?.map(renderItem)}</div>
   ) : (
     <div>Aucun bien</div>
   );
