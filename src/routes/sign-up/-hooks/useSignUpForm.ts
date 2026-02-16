@@ -59,13 +59,13 @@ export default function useSignUpForm() {
           firstname: values.firstname,
           lastname: values.lastname,
           role: values.isAgent ? "agent" : "client",
-          id:data.user.id
+          id: data.user.id,
         });
 
         if (profileError) throw profileError;
       }
 
-      await navigate({ to: "/sign-up-success" });
+      await navigate({ to: "/properties" });
     } catch (error) {
       console.log(error);
       setSubmitError(true);

@@ -9,15 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UpdatePasswordRouteImport } from './routes/update-password'
-import { Route as SignUpSuccessRouteImport } from './routes/sign-up-success'
-import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UpdatePasswordIndexRouteImport } from './routes/update-password/index'
 import { Route as SignUpIndexRouteImport } from './routes/sign-up/index'
 import { Route as PropertiesIndexRouteImport } from './routes/properties/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
-import { Route as AuthErrorRouteImport } from './routes/auth/error'
-import { Route as AuthConfirmRouteImport } from './routes/auth/confirm'
+import { Route as ForgotPasswordIndexRouteImport } from './routes/forgot-password/index'
 import { Route as DemoStartServerFuncsRouteImport } from './routes/demo/start.server-funcs'
 import { Route as DemoStartApiRequestRouteImport } from './routes/demo/start.api-request'
 import { Route as DemoApiNamesRouteImport } from './routes/demo/api.names'
@@ -26,24 +23,14 @@ import { Route as DemoStartSsrSpaModeRouteImport } from './routes/demo/start.ssr
 import { Route as DemoStartSsrFullSsrRouteImport } from './routes/demo/start.ssr.full-ssr'
 import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ssr.data-only'
 
-const UpdatePasswordRoute = UpdatePasswordRouteImport.update({
-  id: '/update-password',
-  path: '/update-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SignUpSuccessRoute = SignUpSuccessRouteImport.update({
-  id: '/sign-up-success',
-  path: '/sign-up-success',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
-  id: '/forgot-password',
-  path: '/forgot-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UpdatePasswordIndexRoute = UpdatePasswordIndexRouteImport.update({
+  id: '/update-password/',
+  path: '/update-password/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignUpIndexRoute = SignUpIndexRouteImport.update({
@@ -61,14 +48,9 @@ const LoginIndexRoute = LoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthErrorRoute = AuthErrorRouteImport.update({
-  id: '/auth/error',
-  path: '/auth/error',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthConfirmRoute = AuthConfirmRouteImport.update({
-  id: '/auth/confirm',
-  path: '/auth/confirm',
+const ForgotPasswordIndexRoute = ForgotPasswordIndexRouteImport.update({
+  id: '/forgot-password/',
+  path: '/forgot-password/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoStartServerFuncsRoute = DemoStartServerFuncsRouteImport.update({
@@ -109,14 +91,11 @@ const DemoStartSsrDataOnlyRoute = DemoStartSsrDataOnlyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/sign-up-success': typeof SignUpSuccessRoute
-  '/update-password': typeof UpdatePasswordRoute
-  '/auth/confirm': typeof AuthConfirmRoute
-  '/auth/error': typeof AuthErrorRoute
+  '/forgot-password/': typeof ForgotPasswordIndexRoute
   '/login/': typeof LoginIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/sign-up/': typeof SignUpIndexRoute
+  '/update-password/': typeof UpdatePasswordIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -127,14 +106,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/sign-up-success': typeof SignUpSuccessRoute
-  '/update-password': typeof UpdatePasswordRoute
-  '/auth/confirm': typeof AuthConfirmRoute
-  '/auth/error': typeof AuthErrorRoute
+  '/forgot-password': typeof ForgotPasswordIndexRoute
   '/login': typeof LoginIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/sign-up': typeof SignUpIndexRoute
+  '/update-password': typeof UpdatePasswordIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -146,14 +122,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/forgot-password': typeof ForgotPasswordRoute
-  '/sign-up-success': typeof SignUpSuccessRoute
-  '/update-password': typeof UpdatePasswordRoute
-  '/auth/confirm': typeof AuthConfirmRoute
-  '/auth/error': typeof AuthErrorRoute
+  '/forgot-password/': typeof ForgotPasswordIndexRoute
   '/login/': typeof LoginIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/sign-up/': typeof SignUpIndexRoute
+  '/update-password/': typeof UpdatePasswordIndexRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
   '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
@@ -166,14 +139,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/forgot-password'
-    | '/sign-up-success'
-    | '/update-password'
-    | '/auth/confirm'
-    | '/auth/error'
+    | '/forgot-password/'
     | '/login/'
     | '/properties/'
     | '/sign-up/'
+    | '/update-password/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -185,13 +155,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/forgot-password'
-    | '/sign-up-success'
-    | '/update-password'
-    | '/auth/confirm'
-    | '/auth/error'
     | '/login'
     | '/properties'
     | '/sign-up'
+    | '/update-password'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -202,14 +169,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/forgot-password'
-    | '/sign-up-success'
-    | '/update-password'
-    | '/auth/confirm'
-    | '/auth/error'
+    | '/forgot-password/'
     | '/login/'
     | '/properties/'
     | '/sign-up/'
+    | '/update-password/'
     | '/demo/api/names'
     | '/demo/start/api-request'
     | '/demo/start/server-funcs'
@@ -221,14 +185,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ForgotPasswordRoute: typeof ForgotPasswordRoute
-  SignUpSuccessRoute: typeof SignUpSuccessRoute
-  UpdatePasswordRoute: typeof UpdatePasswordRoute
-  AuthConfirmRoute: typeof AuthConfirmRoute
-  AuthErrorRoute: typeof AuthErrorRoute
+  ForgotPasswordIndexRoute: typeof ForgotPasswordIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   SignUpIndexRoute: typeof SignUpIndexRoute
+  UpdatePasswordIndexRoute: typeof UpdatePasswordIndexRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
   DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
@@ -240,32 +201,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/update-password': {
-      id: '/update-password'
-      path: '/update-password'
-      fullPath: '/update-password'
-      preLoaderRoute: typeof UpdatePasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sign-up-success': {
-      id: '/sign-up-success'
-      path: '/sign-up-success'
-      fullPath: '/sign-up-success'
-      preLoaderRoute: typeof SignUpSuccessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password': {
-      id: '/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof ForgotPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/update-password/': {
+      id: '/update-password/'
+      path: '/update-password'
+      fullPath: '/update-password/'
+      preLoaderRoute: typeof UpdatePasswordIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sign-up/': {
@@ -289,18 +236,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth/error': {
-      id: '/auth/error'
-      path: '/auth/error'
-      fullPath: '/auth/error'
-      preLoaderRoute: typeof AuthErrorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/confirm': {
-      id: '/auth/confirm'
-      path: '/auth/confirm'
-      fullPath: '/auth/confirm'
-      preLoaderRoute: typeof AuthConfirmRouteImport
+    '/forgot-password/': {
+      id: '/forgot-password/'
+      path: '/forgot-password'
+      fullPath: '/forgot-password/'
+      preLoaderRoute: typeof ForgotPasswordIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/start/server-funcs': {
@@ -357,14 +297,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ForgotPasswordRoute: ForgotPasswordRoute,
-  SignUpSuccessRoute: SignUpSuccessRoute,
-  UpdatePasswordRoute: UpdatePasswordRoute,
-  AuthConfirmRoute: AuthConfirmRoute,
-  AuthErrorRoute: AuthErrorRoute,
+  ForgotPasswordIndexRoute: ForgotPasswordIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   SignUpIndexRoute: SignUpIndexRoute,
+  UpdatePasswordIndexRoute: UpdatePasswordIndexRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
   DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
