@@ -7,6 +7,7 @@ export const fetchUser: () => Promise<ProfileType | null> = createServerFn({
 }).handler(async () => {
   const supabase = createClient();
   const session = await supabase.auth.getUser();
+  
   const { data, error } = await supabase.from("profiles").select("*").single();
 
   if (error || session.error) return null;
